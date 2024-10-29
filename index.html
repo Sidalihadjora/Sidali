@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حكم وعبر دينية</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #4A90E2, #50C9C3);
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: #4A90E2;
+        }
+
+        p {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            font-size: 22px;
+            color: #d9534f;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #4A90E2;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>حكمة اليوم</h1>
+        <p id="quote">اضغط على "عرض حكمة" لتبدأ العد التنازلي وتظهر حكمة عشوائية.</p>
+        <p class="countdown" id="countdown"></p>
+        <button onclick="showRandomQuote()">عرض حكمة</button>
+    </div>
+
+    <script>
+        const quotes = [
+            "لن يغلب عسرٌ يُرافقه ذِكر الله، ولا ضيقٌ تسنده الثقة برحمة الله.",
+            "تفاؤل بالخير تجدّه؛ فالله عند حسن ظن عبده به.",
+            "مهما ضاقت الدنيا، تذكّر أن الله يُدبر لك كل أمر برحمته وفضله.",
+            "إذا اشتدت عليك الأمور، فتذكر أنّ الذي بيده مفاتيح الفرج قريب منك، يراك ويسمعك.",
+            "لا تيأس من رحمة الله، فما من غيم إلا ويعقبه صفاء، ولا من كرب إلا ومعه فرج.",
+            "اللهم إني فوضت أمري إليك، ووضعت أملي بك، فاجعل حياتي كلها فرحاً وسعادة."
+        ];
+
+        function showRandomQuote() {
+            let countdownElement = document.getElementById("countdown");
+            let quoteElement = document.getElementById("quote");
+            let countdown = 5;
+
+            countdownElement.innerText = countdown;
+
+            let countdownInterval = setInterval(() => {
+                countdown--;
+                countdownElement.innerText = countdown;
+
+                if (countdown === 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.innerText = '';
+                    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+                    quoteElement.innerText = randomQuote;
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
